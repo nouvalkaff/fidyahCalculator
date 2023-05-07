@@ -21,14 +21,10 @@ const getIdnYear = (time) => {
   return +year[0];
 };
 
+const formatNumber = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
 const toInt = (input) => {
-  const regex = /^\d+$/g;
-
-  if (typeof input !== 'string' && typeof input !== 'number')
-    throw 'Input must be a string or number';
-
-  if (!regex.test(input)) throw 'Input is not number digits';
-
+  if (String(+input) === 'NaN') throw 'Input must be all number';
   return +input;
 };
 
@@ -110,6 +106,7 @@ module.exports = {
   handleDuplicate,
   toInt,
   lowerMe,
+  formatNumber,
   upperMe,
   sorting,
   shuffle

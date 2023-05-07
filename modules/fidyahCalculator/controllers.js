@@ -1,5 +1,5 @@
 const { calculateFidyah } = require('./helper_function');
-const rate = 10000;
+const rate = 1.4;
 
 exports.fidyahController = async (req, res) => {
   try {
@@ -10,7 +10,7 @@ exports.fidyahController = async (req, res) => {
       codeMessage: 'OK',
       success: true,
       message: 'Di bawah ini adalah total fidyah yang harus kamu bayarkan.',
-      data
+      totalBayar: `Rp ${data}`
     });
   } catch (error) {
     console.error(error);
@@ -18,7 +18,7 @@ exports.fidyahController = async (req, res) => {
       code: 400,
       codeMessage: 'Bad Request',
       success: false,
-      message: error.message
+      message: error.message || error
     });
   }
 };
